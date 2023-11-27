@@ -96,9 +96,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
   int id = 0, res = 0;
   va_list next_var;
   va_start(next_var, format);
-  param_t param;
-  tocen_is_er(&param);
-  param.n_specik = 0;
+  param_t param = {0};
   char mass[BUFF_MAX] = {'\0'};
   char *buff = (char *)mass;
   char *c = (char *)format;
