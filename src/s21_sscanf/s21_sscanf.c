@@ -91,9 +91,9 @@ static void skip_str(char **c, const char **str1, param_t *param) {
 }
 
 
-void rot_na_oborot(const char *str, int *res){        for (char *p = (char *)str;; p++) {
-          if (*p == ' ') continue;
-          if (*p == '\0') {
+void rot_na_oborot(const char *str, int *res){        for (int i = 0; i < s21_strlen(str); i++) {
+          if (str[i] == ' ') continue;
+          if (str[i] == '\0') {
             *res = -1;
             break;
           }
