@@ -37,8 +37,10 @@ START_TEST(sscanf_test_3) {
 #line 20
   char fstr[] = "%d";
   char str[] = "        ";
-  int16_t res1 = s21_sscanf((char *)str, fstr, 0);
-  int16_t res2 = sscanf((char *)str, fstr, 100);
+  int16_t res1 = 0;
+  int16_t res2 = 0;
+  res1 = s21_sscanf((char *)str, fstr, 0);
+  res2 = sscanf((char *)str, fstr, 100);
   ck_assert_int_eq(res1, res2);
 }
 END_TEST

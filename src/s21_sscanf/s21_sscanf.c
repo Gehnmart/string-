@@ -101,6 +101,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
   char *buff = (char *)mass;
   char *c = (char *)format;
   for (; *c;) {
+    tocen_is_er(&param);
     if (*c == ' ' || *c == '\t' || *c == '\n') {
       c++;
       continue;
@@ -113,7 +114,6 @@ int s21_sscanf(const char *str, const char *format, ...) {
       res = -1;
       break;
     }
-    tocen_is_er(&param);
     if (*c == '%') {
       if (*(c - 1) == ' ' || *(c - 1) == '\t' || *(c - 1) == '\n')
         param.space = 1;
