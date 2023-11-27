@@ -124,13 +124,12 @@ int s21_sscanf(const char *str, const char *format, ...) {
         break;
       }
       if (param.specifier != 'n' && !id) {
-        for (; *p; p++) {
+        for (; ; p++) {
           printf("%d\n", res);
           printf("%c | %d | %d | %d | %d \n", param.specifier, param.lengths, param.width, param.n_specik, param.space);
           printf("%c_\n", *p);
           if (*p == ' ') continue;
           if (*p == '\0') {
-          
             res = -1;
            printf("%d\n", res);
             break;
