@@ -93,9 +93,9 @@ static void skip_str(char **c, const char **str1, param_t *param) {
 }
 
 void rot_na_oborot(const char *str, int *res) {
-  for (int i = 0;; i++) {
-    if (str[i] == ' ') continue;
-    if (str[i] == '\0') {
+  for (char *p = (char *)str;; p++) {
+    if (*p == ' ') continue;
+    if (*p == '\0') {
       *res = -1;
       break;
     }
@@ -113,9 +113,11 @@ int s21_sscanf(const char *str, const char *format, ...) {
   char mass[BUFF_MAX] = {'\0'};
   char *buff = (char *)mass;
   char *c = (char *)format;
-  for (; *c;) {
+
+  for (char prev_c = 0; *c;) {
     tocen_is_er(&param);
     if (*c == ' ' || *c == '\t' || *c == '\n') {
+      prev_c = *c;
       c++;
       continue;
     }
@@ -128,8 +130,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
       break;
     }
     if (*c == '%') {
-      if (*(c - 1) == ' ' || *(c - 1) == '\t' || *(c - 1) == '\n')
-        param.space = 1;
+      if (prev_c == ' ' || prev_c == '\t' || prev_c == '\n') param.space = 1;
       c = parse_tockens(&param, c);
       if (str[0] == '\0' && param.specifier != 'n' && !id) {
         res = -1;
