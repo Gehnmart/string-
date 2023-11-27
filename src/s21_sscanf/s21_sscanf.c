@@ -92,11 +92,21 @@ static void skip_str(char **c, const char **str1, param_t *param) {
   }
 }
 
+void rot_na_oborot(const char *str, int *res) {
+  for (char *p = (char *)str;; p++) {
+    if (*p == ' ') continue;
+    if (*p == '\0') {
+      *res = -1;
+      break;
+    }
+    break;
+  }
+}
+
 int s21_sscanf(const char *str, const char *format, ...) {
   if (format == s21_NULL || format[0] == '\0') return 0;
   if (str == s21_NULL) return 0;
   int id = 0, res = 0;
-  char *p = (char *)str;
   va_list next_var;
   va_start(next_var, format);
   param_t param = {0};
@@ -126,19 +136,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
         break;
       }
       if (param.specifier != 'n' && !id) {
-        for (;; p++) {
-          printf("%d\n", res);
-          printf("%c | %d | %d | %d | %d \n", param.specifier, param.lengths,
-                 param.width, param.n_specik, param.space);
-          printf("%c_\n", *p);
-          if (*p == ' ') continue;
-          if (*p == '\0') {
-            res = -1;
-            printf("%d\n", res);
-            break;
-          }
-          break;
-        }
+        rot_na_oborot(str, &res);
       }
       if (res == -1) break;
       id = 1;
