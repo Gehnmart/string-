@@ -171,8 +171,10 @@ START_TEST(test_my_memcmp_4) {
 END_TEST
 
 START_TEST(test_my_memcpy_1) {
-  char *my_func1 = malloc(sizeof(char) * 10);
-  char *func1 = malloc(sizeof(char) * 10);
+  char *my_func1 = NULL;
+  char *func1 = NULL;
+  my_func1 = malloc(sizeof(char) * 10);
+  func1 = malloc(sizeof(char) * 10);
   my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 2);
   func1 = memcpy(func1, "QWERTYUIOP", 2);
 
@@ -183,8 +185,10 @@ START_TEST(test_my_memcpy_1) {
 END_TEST
 
 START_TEST(test_my_memcpy_2) {
-  char *my_func1 = malloc(sizeof(char) * 10);
-  char *func1 = malloc(sizeof(char) * 10);
+  char *my_func1 = NULL;
+  char *func1 = NULL;
+  my_func1 = malloc(sizeof(char) * 10);
+  func1 = malloc(sizeof(char) * 10);
   my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 5);
   func1 = memcpy(func1, "QWERTYUIOP", 5);
 
@@ -195,8 +199,10 @@ START_TEST(test_my_memcpy_2) {
 END_TEST
 
 START_TEST(test_my_memcpy_3) {
-  char *my_func1 = malloc(sizeof(char) * 10);
-  char *func1 = malloc(sizeof(char) * 10);
+  char *my_func1 = NULL;
+  char *func1 = NULL;
+  my_func1 = malloc(sizeof(char) * 10);
+  func1 = malloc(sizeof(char) * 10);
   my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 0);
   func1 = memcpy(func1, "QWERTYUIOP", 0);
 
