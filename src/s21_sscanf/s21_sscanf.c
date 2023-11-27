@@ -124,7 +124,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
         res = -1;
         break;
       }
-      if (param.specifier != 'n' && !id)
+      if (param.specifier != 'n' && !id){
         for (char *p = (char *)str;; p++) {
           if (*p == ' ') continue;
           if (*p == '\0') {
@@ -132,6 +132,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
             break;
           }
           break;
+        }
         }
       if (res == -1) break;
       id = 1;
