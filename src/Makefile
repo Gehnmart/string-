@@ -1,6 +1,6 @@
 .PHONY: clean gcov_report rebuild test
 CC = gcc
-CFLAGS := -std=c11 -Wall -Wextra -Werror
+CFLAGS := -std=c11 -Wall -Wextra -Werror -g
 
 ifeq ($(shell uname -s),Linux) 
 	LDFLAGS = -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
