@@ -1,5 +1,7 @@
 #include "s21_sscanf.h"
 
+#include <stdio.h>
+
 #include "../s21_string.h"
 
 #define s21_EOF -1
@@ -94,6 +96,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
   if (format == s21_NULL || format[0] == '\0') return 0;
   if (str == s21_NULL) return 0;
   int id = 0, res = 0;
+  char *p = (char *)str;
   va_list next_var;
   va_start(next_var, format);
   param_t param = {0};
@@ -123,10 +126,15 @@ int s21_sscanf(const char *str, const char *format, ...) {
         break;
       }
       if (param.specifier != 'n' && !id) {
-        for (char *p = (char *)str;; p++) {
+        for (;; p++) {
+          printf("%d\n", res);
+          printf("%c | %d | %d | %d | %d \n", param.specifier, param.lengths,
+                 param.width, param.n_specik, param.space);
+          printf("%c_\n", *p);
           if (*p == ' ') continue;
           if (*p == '\0') {
             res = -1;
+            printf("%d\n", res);
             break;
           }
           break;
