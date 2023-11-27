@@ -1,5 +1,5 @@
 #include "s21_sscanf.h"
-
+#include <stdio.h>
 #include "../s21_string.h"
 
 #define s21_EOF -1
@@ -94,13 +94,15 @@ int s21_sscanf(const char *str, const char *format, ...) {
   if (format == s21_NULL || format[0] == '\0') return 0;
   if (str == s21_NULL) return 0;
   int id = 0, res = 0;
+  char *p = (char *)str;
   va_list next_var;
   va_start(next_var, format);
   param_t param = {0};
   char mass[BUFF_MAX] = {'\0'};
   char *buff = (char *)mass;
   char *c = (char *)format;
-  for (; *c;) {
+  for (;*c;) {
+    tocen_is_er(&param);
     if (*c == ' ' || *c == '\t' || *c == '\n') {
       c++;
       continue;
@@ -113,7 +115,6 @@ int s21_sscanf(const char *str, const char *format, ...) {
       res = -1;
       break;
     }
-    tocen_is_er(&param);
     if (*c == '%') {
       if (*(c - 1) == ' ' || *(c - 1) == '\t' || *(c - 1) == '\n')
         param.space = 1;
@@ -123,10 +124,15 @@ int s21_sscanf(const char *str, const char *format, ...) {
         break;
       }
       if (param.specifier != 'n' && !id) {
-        for (char *p = (char *)str;; p++) {
+        for (; *p; p++) {
+          printf("%d\n", res);
+          printf("%c | %d | %d | %d | %d \n", param.specifier, param.lengths, param.width, param.n_specik, param.space);
+          printf("%c_\n", *p);
           if (*p == ' ') continue;
           if (*p == '\0') {
+          
             res = -1;
+           printf("%d\n", res);
             break;
           }
           break;
