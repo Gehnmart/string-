@@ -12,8 +12,6 @@ typedef struct {
   int width;
   char lengths;
   char space;
-  int precision;
-  char flags[5];
   char specifier;
   int n_specik;
 

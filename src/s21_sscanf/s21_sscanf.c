@@ -9,10 +9,8 @@ static int isDigit(char ch) { return (ch >= '0' && ch <= '9'); }
 static void tocen_is_er(param_t *n) {
   n->lengths = 0;
   n->space = 0;
-  n->precision = 0;
   n->width = 0;
   n->specifier = 0;
-  for (int i = 0; i < 5; i++) n->flags[i] = 0;
 }
 
 static char *parse_tockens(param_t *param, char *c) {
@@ -137,9 +135,6 @@ int s21_sscanf(const char *str, const char *format, ...) {
         }
       if (res == -1) break;
       id = 1;
-      for (int i = 0; i < 5; i++) {
-        if (param.flags[i] != 0) c = s21_NULL;
-      }
       if (c == s21_NULL) break;
       switch (param.specifier) {
         case 'd':

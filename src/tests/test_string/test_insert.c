@@ -55,8 +55,8 @@ START_TEST(test_my_insert_5) {
 END_TEST
 
 START_TEST(test_my_memchr_1) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int *my_func;
+  int *func;
   char test_cmp2[20] = "123";
   my_func = s21_memchr(test_cmp2, 49, 3);
   func = memchr(test_cmp2, 49, 3);
@@ -65,8 +65,8 @@ START_TEST(test_my_memchr_1) {
 END_TEST
 
 START_TEST(test_my_memchr_2) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int *my_func;
+  int *func;
   char test_cmp2[20] = "123";
   my_func = s21_memchr(test_cmp2, 127, 3);
   func = memchr(test_cmp2, 127, 3);
@@ -75,8 +75,8 @@ START_TEST(test_my_memchr_2) {
 END_TEST
 
 START_TEST(test_my_memchr_3) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int *my_func;
+  int *func;
   char test_cmp2[20] = "123";
   my_func = s21_memchr(test_cmp2, 12, 10);
   func = memchr(test_cmp2, 12, 10);
@@ -85,8 +85,8 @@ START_TEST(test_my_memchr_3) {
 END_TEST
 
 START_TEST(test_my_memchr_4) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int *my_func;
+  int *func;
   char test_cmp2[20] = "qwertyuio";
   my_func = s21_memchr(test_cmp2, 'o', 5);
   func = memchr(test_cmp2, 'o', 5);
@@ -95,8 +95,8 @@ START_TEST(test_my_memchr_4) {
 END_TEST
 
 START_TEST(test_my_memchr_5) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int *my_func;
+  int *func;
   char test_cmp2[20] = "qwertyuio";
   my_func = s21_memchr(test_cmp2, 'w', 5);
   func = memchr(test_cmp2, 'w', 5);
@@ -105,8 +105,8 @@ START_TEST(test_my_memchr_5) {
 END_TEST
 
 START_TEST(test_my_memcmp_1) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int my_func;
+  int func;
   char test_cmp[4] = "123";
   char test_cmp2[4] = "123";
   my_func = s21_memcmp(test_cmp, test_cmp2, 3);
@@ -116,8 +116,8 @@ START_TEST(test_my_memcmp_1) {
 END_TEST
 
 START_TEST(test_my_memcmp_5) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int my_func;
+  int func;
   char test_cmp[] = "qwertyuiop[]";
   char test_cmp2[] = "qwertyuiop[]";
   my_func = s21_memcmp(test_cmp, test_cmp2, 10);
@@ -127,8 +127,8 @@ START_TEST(test_my_memcmp_5) {
 END_TEST
 
 START_TEST(test_my_memcmp_6) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int my_func;
+  int func;
   char test_cmp[] = "qwertyuiop[]";
   char test_cmp2[] = "qwetyuiop[]";
   my_func = s21_memcmp(test_cmp, test_cmp2, 10);
@@ -138,8 +138,8 @@ START_TEST(test_my_memcmp_6) {
 END_TEST
 
 START_TEST(test_my_memcmp_2) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int my_func;
+  int func;
   char test_cmp[4] = "121";
   char test_cmp2[4] = "12g";
   my_func = s21_memcmp(test_cmp, test_cmp2, 3);
@@ -149,8 +149,8 @@ START_TEST(test_my_memcmp_2) {
 END_TEST
 
 START_TEST(test_my_memcmp_3) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int my_func;
+  int func;
   char test_cmp[4] = "12j";
   char test_cmp2[4] = "121";
   my_func = s21_memcmp(test_cmp, test_cmp2, 3);
@@ -160,8 +160,8 @@ START_TEST(test_my_memcmp_3) {
 END_TEST
 
 START_TEST(test_my_memcmp_4) {
-  int *my_func = NULL;
-  int *func = NULL;
+  int my_func;
+  int func;
   char test_cmp[4] = "12j";
   char test_cmp2[4] = "121";
   my_func = s21_memcmp(test_cmp, test_cmp2, 12);
@@ -195,9 +195,8 @@ START_TEST(test_my_memcpy_2) {
 END_TEST
 
 START_TEST(test_my_memcpy_3) {
-  char *my_func1= NULL;char *func1 = NULL;
-  my_func1 = malloc(sizeof(char) * 10);
-  func1 = malloc(sizeof(char) * 10);
+  char *my_func1 = malloc(sizeof(char) * 10);
+  char *func1 = malloc(sizeof(char) * 10);
   my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 0);
   func1 = memcpy(func1, "QWERTYUIOP", 0);
 
@@ -209,9 +208,8 @@ START_TEST(test_my_memcpy_3) {
 END_TEST
 
 START_TEST(test_my_memcpy_4) {
-  char *my_func1= NULL;char *func1 = NULL; 
-  my_func1 = malloc(sizeof(char) * 10);
-  func1 = malloc(sizeof(char) * 10);
+  char *my_func1 = malloc(sizeof(char) * 10);
+  char *func1 = malloc(sizeof(char) * 10);
   my_func1 = s21_memcpy(my_func1, "  ", 2);
   func1 = memcpy(func1, "  ", 2);
   ck_assert_str_eq(func1, my_func1);
@@ -222,9 +220,8 @@ START_TEST(test_my_memcpy_4) {
 END_TEST
 
 START_TEST(test_my_memcpy_5) {
-  char *my_func1= NULL;char *func1 = NULL; 
-  my_func1 = malloc(sizeof(char) * 13);
-  func1 = malloc(sizeof(char) * 13);
+  char *my_func1 = malloc(sizeof(char) * 13);
+  char *func1 = malloc(sizeof(char) * 13);
   my_func1 = s21_memcpy(my_func1,
 
                         "qwertyuy\0ewertyurewertyuiuytrertyuioiuytrertyu", 9);
@@ -237,7 +234,8 @@ START_TEST(test_my_memcpy_5) {
 END_TEST
 
 START_TEST(test_my_memset_1) {
-    char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_set[4] = "123";
   char test_set1[4] = "123";
   my_func = s21_memset(test_set, '1', 3);
@@ -247,7 +245,8 @@ START_TEST(test_my_memset_1) {
 END_TEST
 
 START_TEST(test_my_memset_2) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_set[] = "123456789";
   char test_set1[] = "123456789";
   my_func = s21_memset(test_set, '4', 8);
@@ -257,7 +256,8 @@ START_TEST(test_my_memset_2) {
 END_TEST
 
 START_TEST(test_my_memset_3) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_set[] = "123456789";
   char test_set1[] = "123456789";
   my_func = s21_memset(test_set, '4', 8);
@@ -267,7 +267,8 @@ START_TEST(test_my_memset_3) {
 END_TEST
 
 START_TEST(test_my_memset_4) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_set[] = "fghjk6789";
   char test_set1[] = "fghjk6789";
   my_func = s21_memset(test_set, 'r', 5);
@@ -277,7 +278,8 @@ START_TEST(test_my_memset_4) {
 END_TEST
 
 START_TEST(test_my_memset_5) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_set[] = "fghjk6789w";
   char test_set1[] = "fghjk6789w";
   my_func = s21_memset(test_set, 'A', 9);
@@ -287,7 +289,8 @@ START_TEST(test_my_memset_5) {
 END_TEST
 
 START_TEST(test_my_strchr_1) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_cmp2[20] = "123";
   my_func = s21_strchr(test_cmp2, 49);
   func = strchr(test_cmp2, 49);
@@ -296,7 +299,8 @@ START_TEST(test_my_strchr_1) {
 END_TEST
 
 START_TEST(test_my_strchr_2) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_cmp2[20] = "123";
   my_func = s21_strchr(test_cmp2, 127);
   func = strchr(test_cmp2, 127);
@@ -305,7 +309,8 @@ START_TEST(test_my_strchr_2) {
 END_TEST
 
 START_TEST(test_my_strchr_3) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_cmp2[20] = "123";
   my_func = s21_strchr(test_cmp2, 12);
   func = strchr(test_cmp2, 12);
@@ -314,7 +319,8 @@ START_TEST(test_my_strchr_3) {
 END_TEST
 
 START_TEST(test_my_strchr_4) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_cmp2[20] = "qwertyui";
   my_func = s21_strchr(test_cmp2, 'g');
   func = strchr(test_cmp2, 'g');
@@ -322,7 +328,8 @@ START_TEST(test_my_strchr_4) {
 }
 END_TEST
 START_TEST(test_my_strchr_5) {
-   char *my_func= NULL;char *func = NULL;
+  char *my_func;
+  char *func;
   char test_cmp2[20] = "qwertyui";
   my_func = s21_strchr(test_cmp2, 't');
   func = strchr(test_cmp2, 't');
