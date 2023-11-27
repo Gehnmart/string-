@@ -101,8 +101,8 @@ int s21_sscanf(const char *str, const char *format, ...) {
   param.n_specik = 0;
   char mass[BUFF_MAX] = {'\0'};
   char *buff = (char *)mass;
-  char *c = s21_NULL;
-  for (c = (char *)format; *c;) {
+  char *c = (char *)format;
+  for (; *c;) {
     if (*c == ' ' || *c == '\t' || *c == '\n') {
       c++;
       continue;
@@ -124,7 +124,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
         res = -1;
         break;
       }
-      if (param.specifier != 'n' && !id){
+      if (param.specifier != 'n' && !id) {
         for (char *p = (char *)str;; p++) {
           if (*p == ' ') continue;
           if (*p == '\0') {
@@ -133,7 +133,7 @@ int s21_sscanf(const char *str, const char *format, ...) {
           }
           break;
         }
-        }
+      }
       if (res == -1) break;
       id = 1;
       if (c == s21_NULL) break;
@@ -207,10 +207,6 @@ int s21_sscanf(const char *str, const char *format, ...) {
         case '%':
           str = parse_procent((char *)str, &param);
           break;
-      }
-      if (*c == s21_EOF) {
-        res = -1;
-        break;
       }
       if (c == s21_NULL) break;
       if (str == s21_NULL) break;

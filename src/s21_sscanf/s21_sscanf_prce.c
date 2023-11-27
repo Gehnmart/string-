@@ -30,7 +30,7 @@ char *prce_f(char *str, char *buf, param_t *param) {
   s21_memset(buf, 0, BUFF_MAX - 1);
 
   int width = BUFF_MAX;
-  if (param != s21_NULL) width = (param->width > 0) ? param->width : width;
+  width = (param->width > 0) ? param->width : width;
 
   if (space_skip(&str, param)) {
     return s21_NULL;
@@ -95,7 +95,7 @@ char *prce_o(char *str, char *buf, param_t *param) {
   s21_memset(buf, 0, BUFF_MAX);
 
   int width = BUFF_MAX;
-  if (param != s21_NULL) width = (param->width > 0) ? param->width : width;
+  width = (param->width > 0) ? param->width : width;
 
   if (space_skip(&str, param)) {
     return s21_NULL;
@@ -125,7 +125,7 @@ char *prce_x(char *str, char *buf, param_t *param) {
   s21_memset(buf, 0, BUFF_MAX);
 
   int width = BUFF_MAX;
-  if (param != s21_NULL) width = (param->width > 0) ? param->width : width;
+  width = (param->width > 0) ? param->width : width;
 
   if (space_skip(&str, param)) {
     return s21_NULL;
@@ -162,7 +162,7 @@ char *prce_d(char *str, char *buf, param_t *param) {
   s21_memset(buf, 0, BUFF_MAX);
 
   int width = BUFF_MAX;
-  if (param != s21_NULL) width = (param->width > 0) ? param->width : width;
+  width = (param->width > 0) ? param->width : width;
 
   if (space_skip(&str, param)) {
     return s21_NULL;
@@ -192,7 +192,7 @@ char *prce_i(char *str, char *buf, param_t *param) {
   s21_memset(buf, 0, BUFF_MAX);
 
   int width = BUFF_MAX;
-  if (param != s21_NULL) width = (param->width > 0) ? param->width : width;
+  width = (param->width > 0) ? param->width : width;
 
   if (space_skip(&str, param)) {
     return s21_NULL;
@@ -236,7 +236,7 @@ char *prce_str(char *str, char *buf, param_t *param) {
   s21_memset(buf, 0, BUFF_MAX);
 
   int width = BUFF_MAX;
-  if (param != s21_NULL) width = (param->width > 0) ? param->width : width;
+  width = (param->width > 0) ? param->width : width;
 
   if (space_skip(&str, param)) {
     return s21_NULL;
@@ -259,7 +259,7 @@ char *prce_chr(char *str, char *buf, param_t *param) {
   s21_memset(buf, 0, BUFF_MAX);
 
   int width = 1;
-  if (param != s21_NULL) width = (param->width > 0) ? param->width : width;
+  width = (param->width > 0) ? param->width : width;
 
   if ((param->space)) space_skip(&str, param);
 
