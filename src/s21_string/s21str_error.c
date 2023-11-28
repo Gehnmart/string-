@@ -1,6 +1,7 @@
 #include <stdio.h>
-
+#include <string.h>
 #include "../s21_string.h"
+
 #ifdef __unix__
 static const char matrix_error[134][100] = {
     "Success",
@@ -256,7 +257,7 @@ char *s21_strerror(int errnum) {
   if (errnum >= 0 && errnum < 135)
     k = (char *)matrix_error[errnum];
   else {
-    s21_sprintf(res, "Unknown error: %d",
+   sprintf(res, "Unknown error: %d",
             errnum); 
     return (char *)res;
   }
@@ -265,10 +266,15 @@ char *s21_strerror(int errnum) {
   if (errnum >= 0 && errnum < 107)
     k = (char *)matrix_error[errnum];
   else {
-    s21_sprintf(res, "Unknown error: %d",
+    sprintf(res, "Unknown error: %d",
             errnum);  
     return (char *)res;
   }
 #endif
   return k;
 }
+
+int main(){
+  for(int i = 0; i < 110; i++)
+  printf("%s\n", s21_strerror(i));
+} 
