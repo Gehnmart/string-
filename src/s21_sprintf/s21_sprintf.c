@@ -42,7 +42,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
   int length = 0;
   int negative = 0;
   int shift = 0;
-  char *str_num = malloc(sizeof(char) * 1);
+  char str_num[4000] = {0};
   if (param.specifier == '%') {
     shift = process_int("%", str, param, 1, negative);
   } else if (param.specifier == 'n') {
@@ -57,15 +57,15 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
     }
     if (param.specifier == 'i' || param.specifier == 'd') {
       long int num =
-          processing_args_for_int(param, args, &length, str_num, &negative);
+          processing_args_for_int(param, args, &length, (char *)str_num, &negative);
       if (!(param.precision == -2 && num == 0))
-        shift = process_int(str_num, str, param, length, negative);
+        shift = process_int((char *)str_num, str, param, length, negative);
     } else if (param.specifier == 'u' || param.specifier == 'o' ||
                param.specifier == 'x' || param.specifier == 'X' ||
                param.specifier == 'p') {
-      unsigned long int num = processing_args(param, args, &length, str_num);
+      unsigned long int num = processing_args(param, args, &length, (char *)str_num);
       if (!(param.precision == -2 && num == 0))
-        shift = process_int(str_num, str, param, length, negative);
+        shift = process_int((char *)str_num, str, param, length, negative);
     } else if (param.specifier == 's') {
       process_s(str, param, va_arg(args, char *));
       shift = s21_strlen(str) + 1;
@@ -109,9 +109,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       shift = s21_strlen(str) + 1;
     }
 
-    // free(str_num);
   }
-   free(str_num);
   return shift;
 }
 
@@ -129,7 +127,6 @@ long int processing_args_for_int(param_t param, va_list args, int *length,
   *length = length_int(num);
   if (num < 0) *negative = 1;
 
-  str_num = realloc(str_num, sizeof(char) * (*length+1));
   int_to_str(num, str_num);
   return num;
 }
@@ -153,7 +150,6 @@ long int processing_args(param_t param, va_list args, int *length,
 
   *length = length_int(unnum);
 
-  str_num = realloc(str_num, sizeof(char) *  (*length+1));
   str_num[0] = '\0';
   if (param.specifier == 'o') {
     converter_from_10(str_num, unnum, 8, length, reg);
