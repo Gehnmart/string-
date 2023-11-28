@@ -22,7 +22,7 @@ int length_int(long int num) {
 void int_to_str(long int num, char *str) {
   int length = length_int(num);
   if (num < 0) num = -num;
-  char *temp_str = malloc(sizeof(char) * (length));
+  char *temp_str = malloc(sizeof(char) * (length + 1));
   for (int i = length - 1; i >= 0; i--) {
     temp_str[i] = num % 10 + '0';
     num /= 10;
