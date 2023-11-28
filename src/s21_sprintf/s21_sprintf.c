@@ -56,14 +56,15 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       param.precision = va_arg(args, int);
     }
     if (param.specifier == 'i' || param.specifier == 'd') {
-      long int num =
-          processing_args_for_int(param, args, &length, (char *)str_num, &negative);
+      long int num = processing_args_for_int(param, args, &length,
+                                             (char *)str_num, &negative);
       if (!(param.precision == -2 && num == 0))
         shift = process_int((char *)str_num, str, param, length, negative);
     } else if (param.specifier == 'u' || param.specifier == 'o' ||
                param.specifier == 'x' || param.specifier == 'X' ||
                param.specifier == 'p') {
-      unsigned long int num = processing_args(param, args, &length, (char *)str_num);
+      unsigned long int num =
+          processing_args(param, args, &length, (char *)str_num);
       if (!(param.precision == -2 && num == 0))
         shift = process_int((char *)str_num, str, param, length, negative);
     } else if (param.specifier == 's') {
@@ -108,7 +109,6 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       process_g(&str, &param, num, true);
       shift = s21_strlen(str) + 1;
     }
-
   }
   return shift;
 }
