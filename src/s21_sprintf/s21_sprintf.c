@@ -75,7 +75,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
     if (param.precision == -1) {
       param.precision = va_arg(args, int);
     }
-    char *str_num = malloc(sizeof(char) * 1);
+    char *str_num = calloc(1, sizeof(char));
     if (param.specifier == 'i' || param.specifier == 'd') {
       long int num =
           processing_args_for_int(param, args, &length, str_num, &negative);
