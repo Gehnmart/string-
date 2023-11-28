@@ -136,17 +136,9 @@ void case_letter(int oct, char *mass, int *k, int reg) {
 }
 
 void s21_strcat(char *str1, const char *str2) {
-  char *ptr = (char *)str1;
-  s21_size_t n = s21_strlen(str2) + 1;
-  for (s21_size_t i = 0; i < n;) {
-    if (*ptr && !i) {
-      ptr++;
-      continue;
-    }
-    ptr[i] = ((char *)str2)[i];
-    i++;
-  }
-  ptr[n] = '\0';
+  while (*str1) str1++;
+  while ((*str1++ = *str2++))
+    ;
 }
 
 int f_len(double value) {
