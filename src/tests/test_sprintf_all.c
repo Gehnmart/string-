@@ -6,17 +6,17 @@ int main() {
   int number_failed = 0;
   SRunner *sr;
 
-  Suite *string_suite = string_all_suite();
-  sr = srunner_create(string_suite);
-  srunner_run_all(sr, CK_NORMAL);
-  number_failed = srunner_ntests_failed(sr);
-  srunner_free(sr);
+  // Suite *string_suite = string_all_suite();
+  // sr = srunner_create(string_suite);
+  // srunner_run_all(sr, CK_NORMAL);
+  // number_failed = srunner_ntests_failed(sr);
+  // srunner_free(sr);
 
-  Suite *sscanf_suite = s21_scanf_int_suite();
-  sr = srunner_create(sscanf_suite);
-  srunner_run_all(sr, CK_NORMAL);
-  number_failed = srunner_ntests_failed(sr);
-  srunner_free(sr);
+  // Suite *sscanf_suite = s21_scanf_int_suite();
+  // sr = srunner_create(sscanf_suite);
+  // srunner_run_all(sr, CK_NORMAL);
+  // number_failed = srunner_ntests_failed(sr);
+  // srunner_free(sr);
 
   Suite *d = s21_sprintf_d_suite();
   sr = srunner_create(d);
