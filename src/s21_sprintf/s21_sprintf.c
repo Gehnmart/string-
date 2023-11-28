@@ -13,6 +13,27 @@ long int processing_args(param_t param, va_list args, int *length,
 long int processing_args_for_int(param_t param, va_list args, int *length,
                                  char *str_num, int *negative);
 
+// int main() {
+//   char *str = malloc(sizeof(char) * 1000);
+//   char *str1 = malloc(sizeof(char) * 1000);
+//   int i = 348756923;
+//   double f = 384563245.38457234875;
+//   char s[] = "eirfgheuwrg 84569823745 ewrfghewur";
+//   char c = 'c';
+//   int n = 0;
+//   int n1 = 0;
+
+//   sprintf(str, "%d%x%u%o%c%s%f%e%f%n%%", i, i, i, i, c, s, f, f, f, &n);
+//   s21_sprintf(str1, "%d%x%u%o%c%s%f%e%f%n%%", i, i, i, i, c, s, f, f, f,
+//   &n1);
+//   // printf("%s\n", str);
+//   // printf("%s\n", str1);
+//   free(str);
+//   free(str1);
+
+//   return 0;
+// }
+
 int s21_sprintf(char *str, const char *format, ...) {
   char *p = str;
   str[0] = '\0';
