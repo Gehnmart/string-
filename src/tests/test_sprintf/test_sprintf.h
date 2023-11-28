@@ -9,6 +9,7 @@
 #include "../../s21_string.h"
 
 Suite *s21_sprintf_d_suite(void);
+
 // Suite *s21_sprintf_x_suite(void);
 // Suite *s21_sprintf_u_suite(void);
 // Suite *s21_sprintf_o_suite(void);

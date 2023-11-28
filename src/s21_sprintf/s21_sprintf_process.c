@@ -1,9 +1,27 @@
 #include "s21_sprintf_process.h"
 
 #include <stdio.h>
-
-#include "parse_sprintf.h"
+#include <string.h>
 #include "s21_sprintf_lib.h"
+
+
+static int sagnificant_index(long double value) {
+  int count = 0;
+  if (value < 0) value = -value;
+  
+  long double temp = value * powl(10, count);
+  while (temp < 1) {
+    ++count;
+    temp = value * powl(10, count);
+  }
+
+  return count - 1;
+}
+
+// process string %g
+
+
+
 
 // process string %e
 
@@ -319,17 +337,6 @@ int process_ls(char* p_dest, param_t param, wchar_t* value) {
     *p_dest = *value++;
     p_dest += 1;
   }
-  //  str == "d: +00000000000348756923, x: 00000000000014c99bbb, u:
-  //  00000000000348756923, o: 00000000002462315673, c: �                   , s:
-  //  eirfgheuwrg 84569823, f: +384563245.384572327136993408203125000000 , e:
-  //  +3.845632453845723271369934082031e+08             , f:
-  //  +384563245.384572327136993408203125000000         , n: , percent: %",
-  // str1 == "d: +00000000000348756923, x: 00000000000014c99bbb, u:
-  // 00000000000348756923, o: 00000000002462315673, c: �                   , s:
-  // eirfgheuwrg 84569823, f: +384563245.384572327136993408203125000000 , e:
-  // +3.845632453845723270042046266400e+08             , f:
-  // +384563245.384572327136993408203125000000         , n: , percent: %"
-  // process width with left align
 
   while (param.flags[sub] && param.width > 0) {
     *p_dest = ' ';
@@ -473,3 +480,81 @@ int process_int(char* num_str, char* str, param_t param, int length,
 
   return k;
 }
+
+
+
+
+
+
+int process_g(char** p_dest, param_t* param, long double value, bool capital) {
+  char buffer_e[BUFF_SIZE];
+  char* p_buffer_e = buffer_e;
+  int exp = process_e(p_buffer_e, *param, value, capital, true);
+  char buffer_f[BUFF_SIZE] = {0};
+  char* p_buffer_f = buffer_f;
+
+  int sagnificant = sagnificant_index(value);
+  if (value == 0.0) {
+    *(*p_dest) = '0';
+    *p_dest += 1;
+  } else {
+    if ((((1e6 > fabsl(value) && fabsl(value) >= 1e-4) || value == 0) &&
+         (-4 <= exp && exp < param->precision)) ||
+        ((param->precision != 0 && param->precision == 0 && value < 10) &&
+         sagnificant < 4)) {
+      if (param->precision == 0) {
+        param->precision = 6;
+      }
+      if (param->precision != 0) {
+        param->precision -= f_len(value);
+      }
+      if (value < 1) {
+        if (param->precision < 1) sagnificant += 1;
+        param->precision += sagnificant;
+      }
+
+      process_f(p_buffer_f, *param, value);
+      if (param->precision > 0) {
+        for (--p_buffer_f; *p_buffer_f == '0'; --p_buffer_f) {
+          *p_buffer_f = '\0';
+        }
+      }
+      s21_strncpy(*p_dest, buffer_f, s21_strlen(buffer_f));
+      *p_dest += s21_strlen(buffer_f);
+
+    } else {
+      // *p_buffer_e = '\0';
+
+      int step = 5;
+      if (value >= 1.0e+100 || value <= 1.0e-100) step++;
+
+      for (p_buffer_e -= step; *p_buffer_e == '0'; --p_buffer_e) {
+        for (int i = 0; i < step; ++i) {
+          *(p_buffer_e + i) = *(p_buffer_e + i + 1);
+        }
+      }
+
+      p_buffer_e = buffer_e;
+
+      while (s21_strlen(buffer_e) < (long unsigned int)param->width) {
+        int len = s21_strlen(buffer_e) + 1;
+        for (int i = 0; i < len; ++i) {
+          *(p_buffer_e + len - i) = *(p_buffer_e + len - 1 - i);
+        }
+        if (param->flags[zero]) {
+          *p_buffer_e = '0';
+        } else {
+          *p_buffer_e = ' ';
+        }
+      }
+
+      s21_strncpy(*p_dest, buffer_e, s21_strlen(buffer_e));
+      *p_dest += s21_strlen(buffer_e);
+    }
+  }
+
+  *(*p_dest) = '\0';
+
+  return 0;
+}
+

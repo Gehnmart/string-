@@ -37,12 +37,12 @@ START_TEST(test_s21_sprintf_combs_2) {
   int n1 = 0;
 
   s21_sprintf(str1,
-              "d: %d, x: %x, u: %u, o: %o, c: %c, s: %s, f: %f, e: %e, f: %f, "
+              "d: %d, x: %x, u: %u, o: %o, c: %c, s: %s, f: %f, e: %e, g: %g, "
 
               "n: %n, percent: %%",
               i, i, i, i, c, s, f, f, f, &n1);
   sprintf(str,
-          "d: %d, x: %x, u: %u, o: %o, c: %c, s: %s, f: %f, e: %e, f: %f, n: "
+          "d: %d, x: %x, u: %u, o: %o, c: %c, s: %s, f: %f, e: %e, g: %g, n: "
           "%n, percent: %%",
           i, i, i, i, c, s, f, f, f, &n);
 

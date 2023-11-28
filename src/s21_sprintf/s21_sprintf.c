@@ -91,6 +91,22 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
         num = va_arg(args, double);
       process_e(str, param, num, true, false);
       shift = s21_strlen(str) + 1;
+    } else if (param.specifier == 'g') {
+      long double num = 0;
+      if (param.lengths == 'L')
+        num = va_arg(args, long double);
+      else
+        num = va_arg(args, double);
+      process_g(&str, &param, num, false);
+      shift = s21_strlen(str) + 1;
+    } else if (param.specifier == 'G') {
+      long double num = 0;
+      if (param.lengths == 'L')
+        num = va_arg(args, long double);
+      else
+        num = va_arg(args, double);
+      process_g(&str, &param, num, true);
+      shift = s21_strlen(str) + 1;
     }
 
     free(str_num);
