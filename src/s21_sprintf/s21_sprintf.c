@@ -1,5 +1,4 @@
 #include <stdarg.h>
-#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -55,8 +54,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
     if (param.precision == -1) {
       param.precision = va_arg(args, int);
     }
-    char *str_num = malloc(2);
-    str_num[1] = '\0';
+    char *str_num = malloc(sizeof(char) * 1);
     if (param.specifier == 'i' || param.specifier == 'd') {
       long int num =
           processing_args_for_int(param, args, &length, str_num, &negative);
@@ -115,9 +113,7 @@ long int processing_args_for_int(param_t param, va_list args, int *length,
   *length = length_int(num);
   if (num < 0) *negative = 1;
 
-  size_t all_size = sizeof(char) * *length + 1;
-  str_num = realloc(str_num, all_size);
-  str_num[all_size] = '\0';
+  str_num = realloc(str_num, sizeof(char) * *length);
   int_to_str(num, str_num);
   return num;
 }
