@@ -10,16 +10,16 @@
 
 Suite *s21_sprintf_d_suite(void);
 
-// Suite *s21_sprintf_x_suite(void);
-// Suite *s21_sprintf_u_suite(void);
-// Suite *s21_sprintf_o_suite(void);
-// Suite *s21_sprintf_c_suite(void);
-// Suite *s21_sprintf_s_suite(void);
-// Suite *s21_sprintf_f_suite(void);
-// Suite *s21_sprintf_e_suite(void);
+Suite *s21_sprintf_x_suite(void);
+Suite *s21_sprintf_u_suite(void);
+Suite *s21_sprintf_o_suite(void);
+Suite *s21_sprintf_c_suite(void);
+Suite *s21_sprintf_s_suite(void);
+Suite *s21_sprintf_f_suite(void);
+Suite *s21_sprintf_e_suite(void);
 Suite *s21_sprintf_g_suite(void);
-// Suite *s21_sprintf_n_suite(void);
-// Suite *s21_sprintf_percent_suite(void);
-// Suite *s21_sprintf_combs_suite(void);
+Suite *s21_sprintf_n_suite(void);
+Suite *s21_sprintf_percent_suite(void);
+Suite *s21_sprintf_combs_suite(void);
 
 #endif /*TEST_SPRINTF_H*/
