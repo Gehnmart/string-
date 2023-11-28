@@ -1,11 +1,9 @@
-#include <stdio.h>
-#include <string.h>
 #include "../s21_string.h"
 
 #ifdef __unix__
 static const char matrix_error[134][100] = {
     "Success",
-    "Operation not permitted ",
+    "Operation not permitted",
     "No such file or directory",
     "No such process",
     "Interrupted system call",
@@ -13,7 +11,7 @@ static const char matrix_error[134][100] = {
     "No such device or address",
     "Argument list too long",
     "Exec format error",
-    "Bad file number",
+    "Bad file descriptor",
     "No child processes",
     "Resource temporarily unavailable",
     "Cannot allocate memory",
@@ -257,7 +255,7 @@ char *s21_strerror(int errnum) {
   if (errnum >= 0 && errnum < 134)
     k = (char *)matrix_error[errnum];
   else {
-   sprintf(res, "Unknown error %d",
+   s21_sprintf(res, "Unknown error %d",
             errnum); 
     return (char *)res;
   }
@@ -266,7 +264,7 @@ char *s21_strerror(int errnum) {
   if (errnum >= 0 && errnum < 107)
     k = (char *)matrix_error[errnum];
   else {
-    sprintf(res, "Unknown error: %d",
+    s21_sprintf(res, "Unknown error: %d",
             errnum);  
     return (char *)res;
   }
@@ -274,8 +272,3 @@ char *s21_strerror(int errnum) {
   return k;
 }
 
-int main(){
-  for(int i = 0; i < 110; i++){
-        printf("%s\n", strerror(i));
-  printf("%s\n", s21_strerror(i));}
-} 
