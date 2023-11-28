@@ -1,4 +1,5 @@
 #include "s21_sprintf_lib.h"
+
 #include "parse_sprintf.h"
 
 void write_char_sprintf(char *str, char c) {
@@ -66,7 +67,7 @@ void check_flags(param_t param, char sign[2], int *count, int negative,
       else
         *count -= 1;
     }
-    if (param.specifier == 'x' || param.specifier == 'p') {
+    if (param.specifier == 'x') {
       flag_o_x[0] = '0';
       flag_o_x[1] = 'x';
       *count -= 2;
@@ -132,16 +133,16 @@ void case_letter(int oct, char *mass, int *k, int reg) {
   }
 }
 
-void s21_strcat(char *str1, const char *str2) {
-  while (*str1) {
-    str1++;
+void s21_strcat(char *dest, const char *src) {
+  while (*dest) {
+    dest++;
   }
-  while (*str2 != '\0') {
-    *str1 = *str2;
-    str1++;
-    str2++;
+  while (*src != '\0') {
+    *dest = *src;
+    dest++;
+    src++;
   }
-  *str1 = '\0';
+  *dest = '\0';
 }
 
 int f_len(double value) {
