@@ -489,6 +489,7 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
     *p_dest += 1;
   } else {
     if ((((1e6 > fabsl(value) && fabsl(value) >= 1e-4) || value == 0) &&
+
          (-4 <= exp && exp < param->precision)) &&
         sagnificant < 4) {
       if (param->precision == 0) {

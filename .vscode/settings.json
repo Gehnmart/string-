@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "s21_string.h": "c",
+        "random": "c",
+        "s21_sprintf_lib.h": "c",
+        "parse_sprintf.h": "c",
+        "s21_sprintf_process.h": "c",
+        "stdlib.h": "c"
+    }
+}
