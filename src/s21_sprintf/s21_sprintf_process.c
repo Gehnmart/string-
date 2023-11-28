@@ -2,13 +2,13 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "s21_sprintf_lib.h"
 
+#include "s21_sprintf_lib.h"
 
 static int sagnificant_index(long double value) {
   int count = 0;
   if (value < 0) value = -value;
-  
+
   long double temp = value * powl(10, count);
   while (temp < 1) {
     ++count;
@@ -19,9 +19,6 @@ static int sagnificant_index(long double value) {
 }
 
 // process string %g
-
-
-
 
 // process string %e
 
@@ -113,8 +110,8 @@ int process_e(char* p_dest, param_t param, long double value, bool capital,
       --param.precision;
 
       if (!param.precision) {
-        long double temp = fmodl(value / powl(10.0, count_e_sub - 1), 10.0);
-        if (temp >= 5 && temp < 9.999999) {
+        long double temp2 = fmodl(value / powl(10.0, count_e_sub - 1), 10.0);
+        if (temp2 >= 5 && temp2 < 9.999999) {
           --p_dest;
           *p_dest += 1;
           if (*p_dest > '9') *p_dest -= 10;
@@ -145,9 +142,10 @@ int process_e(char* p_dest, param_t param, long double value, bool capital,
   int count_e_sub = count_e;
 
   if (count_e_sub >= 0) *(p_dest)++ = '+';
-  if (count_e_sub < 0) *(p_dest)++ = '-';
-
-  if (count_e_sub < 0) count_e_sub = -count_e_sub;
+  if (count_e_sub < 0) {
+    *(p_dest)++ = '-';
+    count_e_sub = -count_e_sub;
+  }
 
   if (count_e_sub < 10) {
     *(p_dest)++ = '0';
@@ -224,10 +222,10 @@ int process_f(char* p_dest, param_t param, long double value) {
   // process integer part
 
   char dest_sub[BUFF_SIZE];
-  int i = 0;
+  int ind = 0;
 
   do {
-    long double step = powl(10.0, i + 1);
+    long double step = powl(10.0, ind + 1);
     long double dummy = fmodl(int_value, step);
     // printf(" %Lf %Lf %Lf\n", int_value, step, dummy);
 
@@ -238,28 +236,28 @@ int process_f(char* p_dest, param_t param, long double value) {
       dummy = floorl(dummy * 10.0);
     }
 
-    dest_sub[i] = (char)dummy + '0';
-    i++;
+    dest_sub[ind] = (char)dummy + '0';
+    ind++;
 
     --param.precision;
     --value_length;
   } while (value_length);
 
-  dest_sub[i] = '\0';
+  dest_sub[ind] = '\0';
 
   int len = s21_strlen(dest_sub);
-  for (int i = 0; i < len / 2; ++i) {
-    char ch = dest_sub[i];
-    dest_sub[i] = dest_sub[len - 1 - i];
-    dest_sub[len - 1 - i] = ch;
+  for (ind = 0; ind < len / 2; ++ind) {
+    char ch = dest_sub[ind];
+    dest_sub[ind] = dest_sub[len - 1 - ind];
+    dest_sub[len - 1 - ind] = ch;
   }
 
-  i = 0;
+  ind = 0;
 
-  while (i < len) {
-    *p_dest = dest_sub[i];
+  while (ind < len) {
+    *p_dest = dest_sub[ind];
     p_dest += 1;
-    i++;
+    ind++;
   }
 
   // catch the '.'
@@ -326,9 +324,6 @@ int process_ls(char* p_dest, param_t param, wchar_t* value) {
     // process precision
 
     if (param.precision != 0) {
-      if (param.precision == 0) {
-        break;
-      }
       --param.precision;
     }
 
@@ -481,11 +476,6 @@ int process_int(char* num_str, char* str, param_t param, int length,
   return k;
 }
 
-
-
-
-
-
 int process_g(char** p_dest, param_t* param, long double value, bool capital) {
   char buffer_e[BUFF_SIZE];
   char* p_buffer_e = buffer_e;
@@ -499,8 +489,9 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
     *p_dest += 1;
   } else {
     if ((((1e6 > fabsl(value) && fabsl(value) >= 1e-4) || value == 0) &&
-         (-4 <= exp && exp < param->precision)) ||
-        (sagnificant < 4)) {
+
+         (-4 <= exp && exp < param->precision)) &&
+        sagnificant < 4) {
       if (param->precision == 0) {
         param->precision = 6;
       }
@@ -556,4 +547,3 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
 
   return 0;
 }
-

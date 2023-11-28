@@ -3304,7 +3304,7 @@ Suite *s21_sprintf_g_suite(void) {
   /* Core test case */
   tc_core = tcase_create("sprintf_test");
 
-//   tcase_add_test(tc_core, test_s21_sprintf_g_1);
+  //   tcase_add_test(tc_core, test_s21_sprintf_g_1);
   tcase_add_test(tc_core, test_s21_sprintf_g_2);
   tcase_add_test(tc_core, test_s21_sprintf_g_3);
   tcase_add_test(tc_core, test_s21_sprintf_g_4);

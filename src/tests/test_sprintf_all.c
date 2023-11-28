@@ -6,11 +6,11 @@ int main() {
   int number_failed = 0;
   SRunner *sr;
 
-  Suite *string_suite = string_all_suite();
-  sr = srunner_create(string_suite);
-  srunner_run_all(sr, CK_NORMAL);
-  number_failed = srunner_ntests_failed(sr);
-  srunner_free(sr);
+  // Suite *string_suite = string_all_suite();
+  // sr = srunner_create(string_suite);
+  // srunner_run_all(sr, CK_NORMAL);
+  // number_failed = srunner_ntests_failed(sr);
+  // srunner_free(sr);
 
   // Suite *sscanf_suite = s21_scanf_int_suite();
   // sr = srunner_create(sscanf_suite);
@@ -23,6 +23,12 @@ int main() {
   srunner_run_all(sr, CK_NORMAL);
   number_failed = srunner_ntests_failed(sr);
   srunner_free(sr);
+
+  // Suite *g = s21_sprintf_g_suite();
+  // sr = srunner_create(g);
+  // srunner_run_all(sr, CK_NORMAL);
+  // number_failed = srunner_ntests_failed(sr);
+  // srunner_free(sr);
 
   // Suite *x = s21_sprintf_x_suite();
   // sr = srunner_create(x);

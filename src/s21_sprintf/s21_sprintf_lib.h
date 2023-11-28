@@ -14,7 +14,7 @@ void case_letter(int oct, char *mass, int *k, int reg);
 void write_char_sprintf(char *str, char c);
 int length_int(long int num);
 void int_to_str(long int num, char *str);
-void s21_strcat(char *destination, const char *source);
+void s21_strcat(char *dest, const char *src);
 int f_len(double value);
 int cut_first(int n);
 int strlenw(wchar_t *str);
