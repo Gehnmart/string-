@@ -139,6 +139,7 @@ void s21_strcat(char *str1, const char *str2) {
   while (*str1) str1++;
   while ((*str1++ = *str2++))
     ;
+  *str1 = '\0';
 }
 
 int f_len(double value) {
