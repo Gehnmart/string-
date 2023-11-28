@@ -3,7 +3,7 @@
 #include "../s21_string.h"
 
 #ifdef __unix__
-static const char matrix_error[134][100] = {
+static const char matrix_error[135][100] = {
     "Success",
     "Operation not permitted ",
     "No such file or directory",
