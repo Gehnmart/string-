@@ -24,6 +24,12 @@ int main() {
   number_failed = srunner_ntests_failed(sr);
   srunner_free(sr);
 
+  Suite *g = s21_sprintf_g_suite();
+  sr = srunner_create(g);
+  srunner_run_all(sr, CK_NORMAL);
+  number_failed = srunner_ntests_failed(sr);
+  srunner_free(sr);
+
   // Suite *x = s21_sprintf_x_suite();
   // sr = srunner_create(x);
   // srunner_run_all(sr, CK_NORMAL);
