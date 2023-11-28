@@ -42,7 +42,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
   int length = 0;
   int negative = 0;
   int shift = 0;
-  char str_num[4000] = {0};
+  char str_num[BUFF_MAX] = {0};
   if (param.specifier == '%') {
     shift = process_int("%", str, param, 1, negative);
   } else if (param.specifier == 'n') {

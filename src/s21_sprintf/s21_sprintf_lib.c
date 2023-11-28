@@ -22,16 +22,14 @@ int length_int(long int num) {
 void int_to_str(long int num, char *str) {
   int length = length_int(num);
   if (num < 0) num = -num;
-  char *temp_str = malloc(sizeof(char) * (length + 1));
+  char temp_str[BUFF_MAX]={0};
   for (int i = length - 1; i >= 0; i--) {
     temp_str[i] = num % 10 + '0';
     num /= 10;
   }
 
   temp_str[length] = '\0';
-  s21_strcat(str, temp_str);
-
-  free(temp_str);
+  s21_strcat(str, (char *)temp_str);
 }
 
 void check_flags(param_t param, char sign[2], int *count, int negative,
@@ -87,7 +85,7 @@ void check_flags(param_t param, char sign[2], int *count, int negative,
 
 void converter_from_10(char *num_str, unsigned long int num, int base,
                        int *length, int reg) {
-  char *mass = malloc(sizeof(char) * length_int(num) * 4);
+  char mass[BUFF_MAX] = {0};
   *length = 0;
   while (num >= (unsigned long int)base) {
     int oct = (num % base);
@@ -95,15 +93,13 @@ void converter_from_10(char *num_str, unsigned long int num, int base,
     num /= base;
   }
   case_letter(num, mass, length, reg);
-  char *mass2 = malloc(sizeof(char) * (*length + 1));
+  char mass2[BUFF_MAX] = {0};
   for (int i = 0; i < *length; i++) {
     mass2[i] = mass[*length - 1 - i];
   }
   mass2[*length] = '\0';
 
   s21_strcat(num_str, mass2);
-  free(mass);
-  free(mass2);
 }
 
 void case_letter(int oct, char *mass, int *k, int reg) {
