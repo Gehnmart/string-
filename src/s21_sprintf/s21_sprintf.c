@@ -42,6 +42,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
   int length = 0;
   int negative = 0;
   int shift = 0;
+  char *str_num = malloc(sizeof(char) * 1);
   if (param.specifier == '%') {
     shift = process_int("%", str, param, 1, negative);
   } else if (param.specifier == 'n') {
@@ -54,7 +55,6 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
     if (param.precision == -1) {
       param.precision = va_arg(args, int);
     }
-    char *str_num = malloc(sizeof(char) * 1);
     if (param.specifier == 'i' || param.specifier == 'd') {
       long int num =
           processing_args_for_int(param, args, &length, str_num, &negative);
@@ -108,10 +108,10 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       process_g(&str, &param, num, true);
       shift = s21_strlen(str) + 1;
     }
-    if(str_num != NULL)
-    free(str_num);
-  }
 
+    // free(str_num);
+  }
+   free(str_num);
   return shift;
 }
 
@@ -129,7 +129,7 @@ long int processing_args_for_int(param_t param, va_list args, int *length,
   *length = length_int(num);
   if (num < 0) *negative = 1;
 
-  str_num = realloc(str_num, sizeof(char) * (*length + 1));
+  str_num = realloc(str_num, sizeof(char) * (*length+1));
   int_to_str(num, str_num);
   return num;
 }
@@ -153,7 +153,7 @@ long int processing_args(param_t param, va_list args, int *length,
 
   *length = length_int(unnum);
 
-  str_num = realloc(str_num, sizeof(char) *( *length + 1));
+  str_num = realloc(str_num, sizeof(char) *  (*length+1));
   str_num[0] = '\0';
   if (param.specifier == 'o') {
     converter_from_10(str_num, unnum, 8, length, reg);

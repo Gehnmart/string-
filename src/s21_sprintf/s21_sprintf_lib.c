@@ -30,7 +30,7 @@ void int_to_str(long int num, char *str) {
 
   temp_str[length] = '\0';
   s21_strcat(str, temp_str);
-  if(temp_str != NULL)
+
   free(temp_str);
 }
 
@@ -87,7 +87,7 @@ void check_flags(param_t param, char sign[2], int *count, int negative,
 
 void converter_from_10(char *num_str, unsigned long int num, int base,
                        int *length, int reg) {
-  char *mass = malloc(sizeof(char) * (length_int(num) * 4 + 1));
+  char *mass = malloc(sizeof(char) * length_int(num) * 4);
   *length = 0;
   while (num >= (unsigned long int)base) {
     int oct = (num % base);
@@ -95,16 +95,14 @@ void converter_from_10(char *num_str, unsigned long int num, int base,
     num /= base;
   }
   case_letter(num, mass, length, reg);
-  char *mass2 = malloc(sizeof(char) * ((*length) + 1));
+  char *mass2 = malloc(sizeof(char) * (*length + 1));
   for (int i = 0; i < *length; i++) {
     mass2[i] = mass[*length - 1 - i];
   }
   mass2[*length] = '\0';
 
   s21_strcat(num_str, mass2);
-  if(mass != NULL)
   free(mass);
-   if(mass2 != NULL)
   free(mass2);
 }
 
@@ -139,7 +137,7 @@ void s21_strcat(char *dest, const char *src) {
   while (*dest) {
     dest++;
   }
-  while (*src) {
+  while (*src != '\0') {
     *dest = *src;
     dest++;
     src++;
