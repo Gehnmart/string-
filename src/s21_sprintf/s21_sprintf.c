@@ -129,7 +129,7 @@ long int processing_args_for_int(param_t param, va_list args, int *length,
   *length = length_int(num);
   if (num < 0) *negative = 1;
 
-  str_num = realloc(str_num, sizeof(char) * *length);
+  str_num = realloc(str_num, sizeof(char) * (*length + 1));
   int_to_str(num, str_num);
   return num;
 }
@@ -153,7 +153,7 @@ long int processing_args(param_t param, va_list args, int *length,
 
   *length = length_int(unnum);
 
-  str_num = realloc(str_num, sizeof(char) * *length);
+  str_num = realloc(str_num, sizeof(char) *( *length + 1));
   str_num[0] = '\0';
   if (param.specifier == 'o') {
     converter_from_10(str_num, unnum, 8, length, reg);

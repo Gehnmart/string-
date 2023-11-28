@@ -87,7 +87,7 @@ void check_flags(param_t param, char sign[2], int *count, int negative,
 
 void converter_from_10(char *num_str, unsigned long int num, int base,
                        int *length, int reg) {
-  char *mass = malloc(sizeof(char) * length_int(num) * 4);
+  char *mass = malloc(sizeof(char) * (length_int(num) * 4 + 1));
   *length = 0;
   while (num >= (unsigned long int)base) {
     int oct = (num % base);
@@ -95,7 +95,7 @@ void converter_from_10(char *num_str, unsigned long int num, int base,
     num /= base;
   }
   case_letter(num, mass, length, reg);
-  char *mass2 = malloc(sizeof(char) * (*length));
+  char *mass2 = malloc(sizeof(char) * ((*length) + 1));
   for (int i = 0; i < *length; i++) {
     mass2[i] = mass[*length - 1 - i];
   }
