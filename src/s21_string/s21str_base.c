@@ -42,9 +42,9 @@ int s21_strncmp(const char *str1, const char *str2, s21_size_t n) {
 }
 
 s21_size_t s21_strlen(const char *str) {
-  s21_size_t i = 0;
-  while (str[i]) ++i;
-  return i;
+  const char *s = str;
+  for (; *s;) s++;
+  return (s21_size_t)(s - str);
 }
 
 char *s21_strpbrk(const char *str1, const char *str2) {
