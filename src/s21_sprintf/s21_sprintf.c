@@ -108,7 +108,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       process_g(&str, &param, num, true);
       shift = s21_strlen(str) + 1;
     }
-
+    if(str_num != NULL)
     free(str_num);
   }
 

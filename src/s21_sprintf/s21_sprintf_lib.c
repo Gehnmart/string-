@@ -30,7 +30,7 @@ void int_to_str(long int num, char *str) {
 
   temp_str[length] = '\0';
   s21_strcat(str, temp_str);
-
+  if(temp_str != NULL)
   free(temp_str);
 }
 
@@ -102,7 +102,9 @@ void converter_from_10(char *num_str, unsigned long int num, int base,
   mass2[*length] = '\0';
 
   s21_strcat(num_str, mass2);
+  if(mass != NULL)
   free(mass);
+   if(mass2 != NULL)
   free(mass2);
 }
 
@@ -137,7 +139,7 @@ void s21_strcat(char *dest, const char *src) {
   while (*dest) {
     dest++;
   }
-  while (*src != '\0') {
+  while (*src) {
     *dest = *src;
     dest++;
     src++;
