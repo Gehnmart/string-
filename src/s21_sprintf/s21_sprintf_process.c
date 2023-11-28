@@ -500,8 +500,7 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
   } else {
     if ((((1e6 > fabsl(value) && fabsl(value) >= 1e-4) || value == 0) &&
          (-4 <= exp && exp < param->precision)) ||
-        ((param->precision != 0 && param->precision == 0 && value < 10) &&
-         sagnificant < 4)) {
+        (sagnificant < 4)) {
       if (param->precision == 0) {
         param->precision = 6;
       }
