@@ -14,6 +14,7 @@ Suite *s21_sprintf_u_suite(void);
 Suite *s21_sprintf_o_suite(void);
 Suite *s21_sprintf_c_suite(void);
 Suite *s21_sprintf_s_suite(void);
+Suite *s21_sprintf_g_suite(void);
 Suite *s21_sprintf_f_suite(void);
 Suite *s21_sprintf_e_suite(void);
 Suite *s21_sprintf_g_suite(void);

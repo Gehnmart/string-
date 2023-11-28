@@ -1,7 +1,4 @@
 #include "s21_sprintf_lib.h"
-
-// #include <stdlib.h>
-
 #include "parse_sprintf.h"
 
 void write_char_sprintf(char *str, char c) {

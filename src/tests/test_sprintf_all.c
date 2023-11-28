@@ -12,8 +12,14 @@ int main() {
   // number_failed = srunner_ntests_failed(sr);
   // srunner_free(sr);
 
-  Suite *sscanf_suite = s21_scanf_int_suite();
-  sr = srunner_create(sscanf_suite);
+  // Suite *sscanf_suite = s21_scanf_int_suite();
+  // sr = srunner_create(sscanf_suite);
+  // srunner_run_all(sr, CK_NORMAL);
+  // number_failed = srunner_ntests_failed(sr);
+  // srunner_free(sr);
+
+  Suite *g = s21_sprintf_g_suite();
+  sr = srunner_create(g);
   srunner_run_all(sr, CK_NORMAL);
   number_failed = srunner_ntests_failed(sr);
   srunner_free(sr);
@@ -78,11 +84,11 @@ int main() {
   // number_failed = srunner_ntests_failed(sr);
   // srunner_free(sr);
 
-  // Suite *combs = s21_sprintf_combs_suite();
-  // sr = srunner_create(combs);
-  // srunner_run_all(sr, CK_NORMAL);
-  // number_failed = srunner_ntests_failed(sr);
-  // srunner_free(sr);
+  Suite *combs = s21_sprintf_combs_suite();
+  sr = srunner_create(combs);
+  srunner_run_all(sr, CK_NORMAL);
+  number_failed = srunner_ntests_failed(sr);
+  srunner_free(sr);
 
   return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }

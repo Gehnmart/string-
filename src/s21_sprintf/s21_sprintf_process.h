@@ -16,5 +16,6 @@ int process_e(char* p_dest, param_t params, long double value, bool capital,
               bool from_g);
 int process_int(char* num_str, char* str, param_t param, int length,
                 int negative);
+int process_g(char** p_dest, param_t* param, long double value, bool capital);
 
 #endif /*S21_SPRONTF_PROCESS*/
