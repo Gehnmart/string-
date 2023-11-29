@@ -506,10 +506,10 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
       process_f(p_buffer_f, *param, value);
       if (param->precision > 0) {
         s21_size_t length = s21_strlen(p_buffer_f);
-        int end = length - 1;
+        int end = length;
         for (; s21_strchr("0", p_buffer_f[end]) != s21_NULL; end--)
           ;
-        p_buffer_f[end + 1] = '\0';
+        p_buffer_f[end] = '\0';
       }
       s21_strncpy(*p_dest, buffer_f, s21_strlen(buffer_f));
       *p_dest += s21_strlen(buffer_f);
