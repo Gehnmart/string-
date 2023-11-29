@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../s21_string.h"
 #include "parse_sprintf.h"
@@ -69,13 +70,13 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
         shift = process_int((char *)str_num, str, param, length, negative);
     } else if (param.specifier == 's') {
       process_s(str, param, va_arg(args, char *));
-      shift = s21_strlen(str) + 1;
+      shift = strlen(str) + 1;
     } else if (param.specifier == 'c') {
       if (process_c(str, param, va_arg(args, int))) *c = s21_NULL;
-      shift = s21_strlen(str) + 1;
+      shift = strlen(str) + 1;
     } else if (param.specifier == 'f') {
       process_f(str, param, va_arg(args, double));
-      shift = s21_strlen(str) + 1;
+      shift = strlen(str) + 1;
     } else if (param.specifier == 'e') {
       long double num = 0;
       if (param.lengths == 'L')
@@ -83,7 +84,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       else
         num = va_arg(args, double);
       process_e(str, param, num, false, false);
-      shift = s21_strlen(str) + 1;
+      shift = strlen(str) + 1;
     } else if (param.specifier == 'E') {
       long double num = 0;
       if (param.lengths == 'L')
@@ -91,7 +92,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       else
         num = va_arg(args, double);
       process_e(str, param, num, true, false);
-      shift = s21_strlen(str) + 1;
+      shift =strlen(str) + 1;
     } else if (param.specifier == 'g') {
       long double num = 0;
       if (param.lengths == 'L')
