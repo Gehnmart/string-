@@ -4,8 +4,8 @@
 /* specifier n */
 
 START_TEST(test_s21_sprintf_n_1) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int n = 1;
   int k = 0, k1 = 0;
 
@@ -13,140 +13,118 @@ START_TEST(test_s21_sprintf_n_1) {
   sprintf(str, "num = %d/. %n", n, &k);
 
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_2) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int n = 1954869845;
   int k = 0, k1 = 0;
   s21_sprintf(str1, "num = %d/. %n", n, &k1);
   sprintf(str, "num = %d/. %n", n, &k);
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_3) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int n = 1954869845;
   int k = 0, k1 = 0;
   s21_sprintf(str1, "num = %d/. %x %n", n, 0x12, &k1);
   sprintf(str, "num = %d/. %x %n", n, 0x12, &k);
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_4) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int n = 1;
   int k = 0, k1 = 0;
   s21_sprintf(str1, "num = %d/. %n", s21_NULL, &k1);
   sprintf(str, "num = %d/. %n", s21_NULL, &k);
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_5) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int n = 1;
   int k = 0, k1 = 0;
   s21_sprintf(str1, "num =/. %n", &k1);
   sprintf(str, "num =/. %n", &k);
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_6) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int k = 0, k1 = 0;
   s21_sprintf(str1, "%d%n", 12345678, &k1);
   sprintf(str, "%d%n", 12345678, &k);
 
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_7) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int k = 0, k1 = 0;
 
   s21_sprintf(str1, "%n", &k1);
   sprintf(str, "%n", &k);
 
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_8) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int k = 0, k1 = 0;
   s21_sprintf(str1, "%+- n", &k1);
   sprintf(str, "%+- n", &k);
 
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_9) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int k = 0, k1 = 0;
 
   s21_sprintf(str1, "num = %d. %10n", 123456789, &k1);
   sprintf(str, "num = %d. %10n", 123456789, &k);
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_10) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int k = 0, k1 = 0;
   s21_sprintf(str1, "num = %d. %10.10n", 123456789, &k1);
   sprintf(str, "num = %d. %10.10n", 123456789, &k);
 
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
 START_TEST(test_s21_sprintf_n_11) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
+  char str[1000] = {0};
+  char str1[1000] = {0};
   int k = 0, k1 = 0;
 
   s21_sprintf(str1, "num = %d. %-10.10n", 123456789, &k1);
   sprintf(str, "num = %d. %-10.10n", 123456789, &k);
 
   ck_assert_int_eq(k, k1);
-  free(str);
-  free(str1);
 }
 END_TEST
 
