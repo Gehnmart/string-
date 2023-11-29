@@ -225,8 +225,9 @@ int process_f(char* p_dest, param_t param, long double value) {
   int ind = 0;
 
   do {
+    long double dummy = 0;
     long double step = powl(10.0, ind + 1);
-    long double dummy = fmodl(int_value, step);
+    dummy = fmodl(int_value, step);
     // printf(" %Lf %Lf %Lf\n", int_value, step, dummy);
 
     dummy = dummy / step;
