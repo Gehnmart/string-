@@ -3338,4 +3338,3 @@ Suite *s21_sprintf_d_suite(void) {
 
   return s;
 }
-

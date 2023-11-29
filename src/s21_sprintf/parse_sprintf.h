@@ -22,6 +22,7 @@ enum name_flags {
   zero,
   hash,
 };
+
 char *parse_tockens(param_t *param, char *c);
 void tocen_is_er(param_t *n);
 

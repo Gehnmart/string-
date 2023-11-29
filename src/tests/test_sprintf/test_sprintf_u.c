@@ -1755,4 +1755,3 @@ Suite *s21_sprintf_u_suite(void) {
 
   return s;
 }
-

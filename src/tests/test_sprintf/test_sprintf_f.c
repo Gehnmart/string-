@@ -2892,7 +2892,6 @@ START_TEST(test_s21_sprintf_f_219) {
 }
 END_TEST
 
-
 START_TEST(test_s21_sprintf_f_221) {
   char *str = malloc(sizeof(char) * 1000);
   char *str1 = malloc(sizeof(char) * 1000);

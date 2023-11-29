@@ -18,10 +18,7 @@ static int sagnificant_index(long double value) {
   return count - 1;
 }
 
-// process string %g
-
 // process string %e
-
 int process_e(char* p_dest, param_t param, long double value, bool capital,
               bool from_g) {
   char char_e = 'e';
@@ -172,7 +169,6 @@ int process_e(char* p_dest, param_t param, long double value, bool capital,
 }
 
 // process string %f
-
 int process_f(char* p_dest, param_t param, long double value) {
   int value_length = f_len(value);
   if (value_length == 0) value_length = 1;
@@ -185,7 +181,6 @@ int process_f(char* p_dest, param_t param, long double value) {
 
   // preserve place for '-' , '+' , ' ', '#'
   if (value < 0 || param.flags[none] || param.flags[plus]) --param.width;
-  // if (param.flags[hash]) --param.width;
 
   // process width align: right (spaces)
   if (!param.flags[zero] && !param.flags[sub]) {
@@ -220,7 +215,6 @@ int process_f(char* p_dest, param_t param, long double value) {
   long double int_value = roundl(value - dec_value);
 
   // process integer part
-
   char dest_sub[BUFF_SIZE];
   int ind = 0;
 
@@ -228,7 +222,6 @@ int process_f(char* p_dest, param_t param, long double value) {
     long double dummy = 0;
     long double step = powl(10.0, ind + 1);
     dummy = fmodl(int_value, step);
-    // printf(" %Lf %Lf %Lf\n", int_value, step, dummy);
 
     dummy = dummy / step;
     if (dummy > 0.999999) {
@@ -309,7 +302,6 @@ int process_ls(char* p_dest, param_t param, wchar_t* value) {
   int value_length = strlenw(value);
 
   // process width
-
   param.width -= (param.precision != 0 && param.precision <= value_length)
                      ? param.precision
                      : value_length;
@@ -321,15 +313,12 @@ int process_ls(char* p_dest, param_t param, wchar_t* value) {
   }
 
   while (*value) {
-    //
     // process precision
-
     if (param.precision != 0) {
       --param.precision;
     }
 
     // plain output
-
     *p_dest = *value++;
     p_dest += 1;
   }
@@ -346,13 +335,11 @@ int process_ls(char* p_dest, param_t param, wchar_t* value) {
 }
 
 // process string %s
-
 int process_s(char* p_dest, param_t param, char* value) {
   int value_length = 6;
   if (value) value_length = s21_strlen(value);
 
   // process width
-
   param.width -= (param.precision != 0 && param.precision <= value_length)
                      ? param.precision
                      : value_length;
@@ -372,7 +359,6 @@ int process_s(char* p_dest, param_t param, char* value) {
   } else {
     while (*value) {
       // plain output
-
       *p_dest = *value++;
       p_dest += 1;
       if (param.precision == 1) break;
@@ -393,7 +379,6 @@ int process_s(char* p_dest, param_t param, char* value) {
 }
 
 // process char %c
-
 int process_c(char* p_dest, param_t param, int value) {
   int error = 0;
   if (value) {
