@@ -74,9 +74,7 @@ int case_specifer(param_t param, va_list args, char *str, char *p, char **c) {
       if (process_c(str, param, va_arg(args, int))) *c = s21_NULL;
       shift = s21_strlen(str) + 1;
     } else if (param.specifier == 'f') {
-      long double value = 0;
-      value = va_arg(args, double);
-      process_f(str, param, value);
+      process_f(str, param, va_arg(args, double));
       shift = s21_strlen(str) + 1;
     } else if (param.specifier == 'e') {
       long double num = 0;
