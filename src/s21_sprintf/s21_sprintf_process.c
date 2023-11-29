@@ -522,14 +522,6 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
       if ((int)s21_strlen(p_buffer_e) > step) {
         p_buffer_e -= step;
 
-        for (; s21_strlen(p_buffer_e) > 1; --p_buffer_e) {
-          if (*p_buffer_e != '0') break;
-
-          for (int i = 0; i < step; ++i) {
-            *(p_buffer_e + i) = *(p_buffer_e + i + 1);
-          }
-        }
-
         p_buffer_e = buffer_e;
 
         while (s21_strlen(buffer_e) < (long unsigned int)param->width) {
