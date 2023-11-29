@@ -489,7 +489,6 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
     *p_dest += 1;
   } else {
     if ((((1e6 > fabsl(value) && fabsl(value) >= 1e-4) || value == 0) &&
-
          (-4 <= exp && exp < param->precision)) &&
         sagnificant < 4) {
       if (param->precision == 0) {
@@ -506,10 +505,10 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
       process_f(p_buffer_f, *param, value);
       if (param->precision > 0) {
         s21_size_t length = s21_strlen(p_buffer_f);
-        int end = length;
+        int end = length - 1;
         for (; s21_strchr("0", p_buffer_f[end]) != s21_NULL; end--)
           ;
-        p_buffer_f[end] = '\0';
+        p_buffer_f[end + 1] = '\0';
       }
       s21_strncpy(*p_dest, buffer_f, s21_strlen(buffer_f));
       *p_dest += s21_strlen(buffer_f);
@@ -520,23 +519,26 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
       int step = 5;
       if (value >= 1.0e+100 || value <= 1.0e-100) step++;
 
-      for (p_buffer_e -= step; *p_buffer_e == '0'; --p_buffer_e) {
-        for (int i = 0; i < step; ++i) {
-          *(p_buffer_e + i) = *(p_buffer_e + i + 1);
+      if (s21_strlen(p_buffer_e) > 1) {
+        p_buffer_e -= step;
+        for (; *p_buffer_e == '0' && s21_strlen(p_buffer_e) > 1; --p_buffer_e) {
+          for (int i = 0; i < step; ++i) {
+            *(p_buffer_e + i) = *(p_buffer_e + i + 1);
+          }
         }
-      }
 
-      p_buffer_e = buffer_e;
+        p_buffer_e = buffer_e;
 
-      while (s21_strlen(buffer_e) < (long unsigned int)param->width) {
-        int len = s21_strlen(buffer_e) + 1;
-        for (int i = 0; i < len; ++i) {
-          *(p_buffer_e + len - i) = *(p_buffer_e + len - 1 - i);
-        }
-        if (param->flags[zero]) {
-          *p_buffer_e = '0';
-        } else {
-          *p_buffer_e = ' ';
+        while (s21_strlen(buffer_e) < (long unsigned int)param->width) {
+          int len = s21_strlen(buffer_e) + 1;
+          for (int i = 0; i < len; ++i) {
+            *(p_buffer_e + len - i) = *(p_buffer_e + len - 1 - i);
+          }
+          if (param->flags[zero]) {
+            *p_buffer_e = '0';
+          } else {
+            *p_buffer_e = ' ';
+          }
         }
       }
 
