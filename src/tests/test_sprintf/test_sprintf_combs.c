@@ -78,20 +78,6 @@ START_TEST(test_s21_sprintf_combs_3) {
 }
 END_TEST
 
-// tests/test_sprintf/test_sprintf_combs.c:103:F:sprintf_test:test_s21_sprintf_combs_4:0:
-// Assertion 'str == str1' failed:
-//  str == "d: +00000000000348756923, x: 00000000000014c99bbb, u:
-//  00000000000348756923, o: 00000000002462315673, c: �                   , s:
-//  eirfgheuwrg 84569823, f: +384563245.384572327136993408203125000000         ,
-//  e: +3.845632453845723271369934082031e+08             , f:
-//  +384563245.384572327136993408203125000000         , n: , percent: %"
-// str1 == "d: +00000000000348756923, x: 00000000000014c99bbb, u:
-// 00000000000348756923, o: 00000000002462315673, c: �                   , s:
-// eirfgheuwrg 84569823745 ewrfghewur, f:
-// +384563245.384572327136993408203125000000         , e:
-// +3.845632453845723270042046266400e+08             , f:
-// +384563245.384572327136993408203125000000         , n: , percent: %"
-
 START_TEST(test_s21_sprintf_combs_4) {
   char *str = malloc(sizeof(char) * 1000);
   char *str1 = malloc(sizeof(char) * 1000);

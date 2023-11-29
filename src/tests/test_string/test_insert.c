@@ -171,71 +171,53 @@ START_TEST(test_my_memcmp_4) {
 END_TEST
 
 START_TEST(test_my_memcpy_1) {
-  char *my_func1 = NULL;
-  char *func1 = NULL;
-  my_func1 = malloc(sizeof(char) * 10);
-  func1 = malloc(sizeof(char) * 10);
-  my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 2);
-  func1 = memcpy(func1, "QWERTYUIOP", 2);
+  char my_func1[40] = {0};
+  char func1[40] = {0};
+  char *temp_my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 5);
+  char *temp_func1 = memcpy(func1, "QWERTYUIOP", 5);
 
   ck_assert_str_eq(func1, my_func1);
-  free(my_func1);
-  free(func1);
 }
 END_TEST
 
 START_TEST(test_my_memcpy_2) {
-  char *my_func1 = NULL;
-  char *func1 = NULL;
-  my_func1 = malloc(sizeof(char) * 10);
-  func1 = malloc(sizeof(char) * 10);
-  my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 5);
-  func1 = memcpy(func1, "QWERTYUIOP", 5);
+  char my_func1[40] = {0};
+  char func1[40] = {0};
+  char *temp_my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 5);
+  char *temp_func1 = memcpy(func1, "QWERTYUIOP", 5);
 
   ck_assert_str_eq(func1, my_func1);
-  free(my_func1);
-  free(func1);
 }
 END_TEST
 
 START_TEST(test_my_memcpy_3) {
-  char *my_func1 = NULL;
-  char *func1 = NULL;
-  my_func1 = malloc(sizeof(char) * 10);
-  func1 = malloc(sizeof(char) * 10);
-  my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 0);
-  func1 = memcpy(func1, "QWERTYUIOP", 0);
+  char my_func1[40] = {0};
+  char func1[40] = {0};
+  char *temp_my_func1 = s21_memcpy(my_func1, "QWERTYUIOP", 5);
+  char *temp_func1 = memcpy(func1, "QWERTYUIOP", 5);
 
   ck_assert_str_eq(func1, my_func1);
-
-  free(my_func1);
-  free(func1);
 }
 END_TEST
 
 START_TEST(test_my_memcpy_4) {
-  char *my_func1 = malloc(sizeof(char) * 10);
-  char *func1 = malloc(sizeof(char) * 10);
-  my_func1 = s21_memcpy(my_func1, "  ", 2);
-  func1 = memcpy(func1, "  ", 2);
-  ck_assert_str_eq(func1, my_func1);
+  char my_func1[40] = {0};
+  char func1[40] = {0};
+  char *temp_my_func1 = s21_memcpy(my_func1, "QWE12345", 5);
+  char *temp_func1 = memcpy(func1, "QW12345", 5);
 
-  free(my_func1);
-  free(func1);
+  ck_assert_str_eq(func1, my_func1);
 }
 END_TEST
 
 START_TEST(test_my_memcpy_5) {
-  char *my_func1 = malloc(sizeof(char) * 13);
-  char *func1 = malloc(sizeof(char) * 13);
-  my_func1 = s21_memcpy(my_func1,
-
-                        "qwertyuy\0ewertyurewertyuiuytrertyuioiuytrertyu", 9);
-  func1 = memcpy(func1, "qwertyuy\0ewertyuiuytrertyu", 9);
+  char my_func1[40] = {0};
+  char func1[40] = {0};
+  char *temp_my_func1 = s21_memcpy(
+      my_func1, "qwertyuy\0ewertyurewertyuiuytrertyuioiuytrertyu", 9);
+  char *temp_func1 = memcpy(func1, "0ewertyuiuytrertyu", 9);
 
   ck_assert_str_eq(func1, my_func1);
-  free(my_func1);
-  free(func1);
 }
 END_TEST
 

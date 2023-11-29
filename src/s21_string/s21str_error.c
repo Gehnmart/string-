@@ -255,8 +255,7 @@ char *s21_strerror(int errnum) {
   if (errnum >= 0 && errnum < 134)
     k = (char *)matrix_error[errnum];
   else {
-   s21_sprintf(res, "Unknown error %d",
-            errnum); 
+    s21_sprintf(res, "Unknown error %d", errnum);
     return (char *)res;
   }
 #endif
@@ -264,11 +263,9 @@ char *s21_strerror(int errnum) {
   if (errnum >= 0 && errnum < 107)
     k = (char *)matrix_error[errnum];
   else {
-    s21_sprintf(res, "Unknown error: %d",
-            errnum);  
+    s21_sprintf(res, "Unknown error: %d", errnum);
     return (char *)res;
   }
 #endif
   return k;
 }
-
