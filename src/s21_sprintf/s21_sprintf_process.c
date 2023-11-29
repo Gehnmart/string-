@@ -519,9 +519,12 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
       int step = 5;
       if (value >= 1.0e+100 || value <= 1.0e-100) step++;
 
-      if (s21_strlen(p_buffer_e) > 1) {
+      if ((int)s21_strlen(p_buffer_e) > step) {
         p_buffer_e -= step;
-        for (; *p_buffer_e == '0' && s21_strlen(p_buffer_e) > 1; --p_buffer_e) {
+
+        for (; s21_strlen(p_buffer_e) > 1; --p_buffer_e) {
+          if (*p_buffer_e != '0') break;
+
           for (int i = 0; i < step; ++i) {
             *(p_buffer_e + i) = *(p_buffer_e + i + 1);
           }
