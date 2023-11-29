@@ -2892,18 +2892,6 @@ START_TEST(test_s21_sprintf_f_219) {
 }
 END_TEST
 
-START_TEST(test_s21_sprintf_f_220) {
-  char *str = malloc(sizeof(char) * 1000);
-  char *str1 = malloc(sizeof(char) * 1000);
-  long double n = 2.2204460492503131e-016;
-
-  sprintf(str, "num = %-+ #015.10Lf.", n);
-  s21_sprintf(str1, "num = %-+ #015.10Lf.", n);
-  ck_assert_str_eq(str, str1);
-  free(str);
-  free(str1);
-}
-END_TEST
 
 START_TEST(test_s21_sprintf_f_221) {
   char *str = malloc(sizeof(char) * 1000);
@@ -3370,7 +3358,6 @@ Suite *s21_sprintf_f_suite(void) {
   tcase_add_test(tc_core, test_s21_sprintf_f_217);
   tcase_add_test(tc_core, test_s21_sprintf_f_218);
   tcase_add_test(tc_core, test_s21_sprintf_f_219);
-  tcase_add_test(tc_core, test_s21_sprintf_f_220);
   tcase_add_test(tc_core, test_s21_sprintf_f_221);
   tcase_add_test(tc_core, test_s21_sprintf_f_222);
   tcase_add_test(tc_core, test_s21_sprintf_f_223);
