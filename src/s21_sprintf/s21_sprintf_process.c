@@ -504,7 +504,7 @@ int process_g(char** p_dest, param_t* param, long double value, bool capital) {
       }
 
       process_f(p_buffer_f, *param, value);
-      if (param->precision > 0 && strlen(p_buffer_f) > 1) {
+      if (param->precision > 0 && strlen(p_buffer_f) > 2) {
         for (--p_buffer_f; *p_buffer_f == '0'; --p_buffer_f) {
           *p_buffer_f = '\0';
         }
