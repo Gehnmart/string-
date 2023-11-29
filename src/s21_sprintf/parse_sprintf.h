@@ -4,7 +4,7 @@
 
 #include "../s21_string.h"
 
-#define BUFF_MAX 4096
+#define BUFF_MAX 8192
 #define isDigit(x) (x >= '0' && x <= '9')
 
 typedef struct {

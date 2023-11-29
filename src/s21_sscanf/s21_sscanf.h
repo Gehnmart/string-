@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-#define BUFF_MAX 4096
+#define BUFF_MAX 8192
 
 typedef struct {
   int width;
